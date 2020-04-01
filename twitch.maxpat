@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 892.0, 967.0 ],
+		"rect" : [ 34.0, 79.0, 412.0, 967.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,49 +39,13 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-21",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 126.0, 351.0, 50.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-13",
-					"maxclass" : "newobj",
+					"id" : "obj-4",
+					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"patching_rect" : [ 126.0, 313.0, 73.0, 22.0 ],
-					"text" : "random 100"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "toggle",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 18.0, 309.0, 93.0, 93.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-7",
-					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 47.0, 202.0, 77.0, 22.0 ],
-					"text" : "route foo bar"
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 10.0, 286.0, 50.0, 22.0 ],
+					"text" : "AF100"
 				}
 
 			}
@@ -93,7 +57,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 147.0, 268.0, 275.0, 22.0 ],
-					"text" : "stdout \"* Executed bar command\""
+					"text" : "stdout \"* Executed AF100 command\""
 				}
 
 			}
@@ -124,7 +88,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 429.5, 37.0, 400.0, 220.0 ],
+					"patching_rect" : [ 430.5, 70.0, 426.0, 410.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -152,6 +116,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -198,16 +164,9 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
+					"destination" : [ "obj-4", 1 ],
 					"order" : 1,
 					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-21", 0 ],
-					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -221,7 +180,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 303.5, 247.0, 417.0, 247.0, 417.0, 25.0, 439.0, 25.0 ],
+					"midpoints" : [ 303.5, 247.0, 417.0, 247.0, 417.0, 25.0, 440.0, 25.0 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -233,24 +192,10 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
-					"source" : [ "obj-7", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"source" : [ "obj-7", 0 ]
-				}
-
-			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "app.js",
-				"bootpath" : "~/Programming/FabLab/max_twitch",
+				"bootpath" : "~/Programming/FabLab/Twitch_Maxmsp_HPGL",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

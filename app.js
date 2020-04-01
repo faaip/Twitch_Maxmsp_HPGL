@@ -37,17 +37,20 @@ function onMessageHandler(target, context, msg, self) {
   if (self) { return; } // Ignore messages from the bot
 
   // Remove whitespace from chat message
-  const instruction = msg.trim();
+  const message = msg.trim();
+  const instruction = message.substring(0,2);
+  const arguments = msg.trim().substring(2);
 
   // If the command is known, let's execute it
   if (instructions.includes(instruction)) {
-    client.say(target, `You did a ${instruction} command`);
-    console.log(`* Executed ${instruction} command`);
-    Max.outlet(instruction);
+    const command = instruction + arguments;
+    client.say(target, `You did a ${command} command`);
+    console.log(`* Executed ${command} command`);
+    Max.outlet(command);
   } else {
     client.say(target, `${instruction} is an unknown command!`);
     console.log(`* Unknown command ${instruction}`);
-    Max.outlet(`* Unknown command ${instructions}`);
+    Max.outlet(`* Unknown command ${instruction}`);
   }
 }
 
