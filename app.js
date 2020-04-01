@@ -2,6 +2,16 @@ require('dotenv').config()
 const tmi = require('tmi.js');
 const Max = require('max-api');
 
+// HPGL instructions
+let instructions = [
+  "AA", "AF", "AH", "AP", "AR", "AS", "BL", "CA", "CC", "CI", "CM", "CP", "CS", "CT", "DC",
+  "DF", "DI", "DL", "DP", "DR", "DS", "DT", "EA", "EC", "EP", "ER", "ES", "EW", "FP", "FR",
+  "FS", "FT", "GP", "IM", "IN", "IP", "IV", "IW", "LB", "LO", "LT", "NR", "OA", "OC", "OD",
+  "OE", "OF", "OH", "OI", "OL", "OO", "OP", "OS", "OT", "OW", "PA", "PB", "PD", "PG", "PM",
+  "PR", "PT", "PU", "RA", "RO", "RR", "SA", "SC", "SG", "SI", "SL", "SM", "SP", "SR", "SS",
+  "TL", "UC", "UF", "VS", "WG", "XT", "YT"
+]
+
 // Define configuration options
 const opts = {
   identity: {
@@ -23,29 +33,25 @@ client.on('connected', onConnectedHandler);
 client.connect();
 
 // Called every time a message comes in
-function onMessageHandler (target, context, msg, self) {
+function onMessageHandler(target, context, msg, self) {
   if (self) { return; } // Ignore messages from the bot
 
   // Remove whitespace from chat message
-  const commandName = msg.trim();
+  const instruction = msg.trim();
 
   // If the command is known, let's execute it
-  if (commandName === 'foo') {
-    client.say(target, `You did a ${commandName} command`);
-    console.log(`* Executed ${commandName} command`);
-	Max.outlet(`foo`);
-  }else if (commandName === 'bar') {
-    client.say(target, `You did a ${commandName} command`);
-    console.log(`* Executed ${commandName} command`);
-	Max.outlet(`bar`);
+  if (instructions.includes(instruction)) {
+    client.say(target, `You did a ${instruction} command`);
+    console.log(`* Executed ${instruction} command`);
+    Max.outlet(instruction);
   } else {
-	client.say(target, `${commandName} is an unknown command!`);
-    console.log(`* Unknown command ${commandName}`);
-	Max.outlet(`* Unknown command ${commandName}`);
+    client.say(target, `${instruction} is an unknown command!`);
+    console.log(`* Unknown command ${instruction}`);
+    Max.outlet(`* Unknown command ${instructions}`);
   }
 }
 
 // Called every time the bot connects to Twitch chat
-function onConnectedHandler (addr, port) {
+function onConnectedHandler(addr, port) {
   console.log(`* Connected to ${addr}:${port}`);
 }
